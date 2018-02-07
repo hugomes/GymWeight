@@ -1,0 +1,33 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="GymWeight.Views.ExerciseAddView"
+             Title="Add Exercise"
+             x:Name="ExerciseAddView">
+    <StackLayout>
+        <StackLayout Orientation="Vertical">
+            <Entry x:Name="entName" Text="{Binding ExerciseAdd.Name}" Placeholder="Name from exercise" HorizontalOptions="FillAndExpand"></Entry>
+            <Entry x:Name="entSeries" Text="{Binding ExerciseAdd.Series}" Placeholder="Series from exercise" HorizontalOptions="FillAndExpand"></Entry>
+            <Entry x:Name="entRepetitions" Text="{Binding ExerciseAdd.Repetitions}" Placeholder="Repetitions from exercise" HorizontalOptions="FillAndExpand"></Entry>
+            <Button Command="{Binding SaveCommand}" Text="Save Exercise" HorizontalOptions="FillAndExpand"></Button>
+        </StackLayout>
+        <Label Text="Exercises List" HorizontalOptions="Center" FontAttributes="Bold" FontSize="24"></Label>
+        <ListView x:Name="lvExercises" ItemsSource="{Binding ExerciseList}">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <ViewCell>
+                        <ViewCell.ContextActions>
+                            <MenuItem Text="Delete" Command="{Binding Source={x:Reference ExerciseAddView}, Path=BindingContext.DeleteCommand}" CommandParameter="{Binding .}"></MenuItem>
+                            <MenuItem Text="Edit" Command="{Binding Source={x:Reference ExerciseAddView}, Path=BindingContext.LoadCommand}" CommandParameter="{Binding .}"></MenuItem>
+                        </ViewCell.ContextActions>
+                        <StackLayout>
+                            <Label Text="{Binding Name}"></Label>
+                            <Label Text="{Binding Series}"></Label>
+                            <Label Text="{Binding Repetitions}"></Label>
+                        </StackLayout>
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+    </StackLayout>
+</ContentPage>
