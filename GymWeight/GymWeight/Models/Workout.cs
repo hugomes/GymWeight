@@ -16,8 +16,7 @@ namespace GymWeight.Models
         public string Name { get; set; }
         [NotNull]
         public DateTime ExpirationDate { get; set; }
-        [OneToMany]
-        public List<Exercise> ExercisesList { get; set; }
-
+        [ManyToMany(typeof(WorkoutExercise))]
+        public List<Exercise> ExerciseList { get; set; }
     }
 }

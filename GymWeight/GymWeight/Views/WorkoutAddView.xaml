@@ -1,0 +1,31 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="GymWeight.Views.WorkoutAddView"
+             x:Name="WorkoutAddView"
+             Title="Add Workout">
+    <StackLayout>
+        <StackLayout Orientation="Vertical">
+            <Entry x:Name="entName" Text="{Binding WorkoutAdd.Name}" Placeholder="Workout name" HorizontalOptions="FillAndExpand"></Entry>
+            <DatePicker x:Name="entExpirationDate" Date="{Binding WorkoutAdd.ExpirationDate}" HorizontalOptions="FillAndExpand"></DatePicker>
+            <Button Command="{Binding SaveCommand}" Text="Save Workout" HorizontalOptions="FillAndExpand"></Button>
+        </StackLayout>
+        <Label Text="Workouts List" HorizontalOptions="Center" FontAttributes="Bold" FontSize="24"></Label>
+        <ListView x:Name="lvWorkouts" ItemsSource="{Binding WorkoutList}">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <ViewCell>
+                        <ViewCell.ContextActions>
+                            <MenuItem Text="Delete" Command="{Binding Source={x:Reference WorkoutAddView}, Path=BindingContext.DeleteCommand}" CommandParameter="{Binding .}"></MenuItem>
+                            <MenuItem Text="Edit" Command="{Binding Source={x:Reference WorkoutAddView}, Path=BindingContext.LoadCommand}" CommandParameter="{Binding .}"></MenuItem>
+                        </ViewCell.ContextActions>
+                        <StackLayout>
+                            <Label Text="{Binding Name}"></Label>
+                            <Label Text="{Binding ExpirationDate, StringFormat='{0:dd/MM/yyyy}'}"></Label>
+                        </StackLayout>
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+    </StackLayout>
+</ContentPage>

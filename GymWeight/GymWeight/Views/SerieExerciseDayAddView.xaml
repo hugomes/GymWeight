@@ -2,15 +2,63 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="GymWeight.Views.SerieExerciseDayAddView"
-             xmlns:converters="clr-namespace:GymWeight.Converters;assembly=GymWeight">
+             Title="Add serie from exercise"
+             x:Name="SerieExerciseDayAddView"
+             xmlns:convert="clr-namespace:GymWeight.Converters;assembly=GymWeight">
     <ContentPage.Resources>
         <ResourceDictionary>
-            <converters:DifficultyConverter x:Key="DifficultyConverter"></converters:DifficultyConverter>
+            <convert:DifficultyConverter x:Key="DifficultyConverter" />
         </ResourceDictionary>
     </ContentPage.Resources>
-    <StackLayout>
-        <StackLayout Orientation="Vertical">
-            <Picker x:Name="ExerciseDayPicker" BindingContext="{Binding DifficultyList}"></Picker>
+    <StackLayout Padding="10, 5, 10 ,5">
+        <StackLayout Orientation="Horizontal" HorizontalOptions="CenterAndExpand">
+            <Label Text="{Binding ExerciseDay.Day.Date}"/>
+            <Label Text="{Binding ExerciseDay.Exercise.Name}"/>
         </StackLayout>
+        <StackLayout Orientation="Horizontal" HorizontalOptions="CenterAndExpand">
+            <Entry x:Name="entRepetitions" Text="{Binding SerieExerciseDayAdd.Repetitions}" Keyboard="Numeric" Placeholder="Repetitions" HorizontalOptions="FillAndExpand"></Entry>
+            <Entry x:Name="entWeight" Text="{Binding SerieExerciseDayAdd.Weight}" Keyboard="Numeric" Placeholder="Weight" HorizontalOptions="FillAndExpand"></Entry>
+        </StackLayout>
+        <StackLayout Orientation="Horizontal" HorizontalOptions="CenterAndExpand">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="25"></RowDefinition>
+                    <RowDefinition Height="*"></RowDefinition>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"></ColumnDefinition>
+                    <ColumnDefinition Width="*"></ColumnDefinition>
+                    <ColumnDefinition Width="*"></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+                <Label Grid.Row="0" Grid.Column="0" Text="Easy" HorizontalOptions="Center" FontAttributes="Bold" FontSize="12"></Label>
+                <Label Grid.Row="0" Grid.Column="1" Text="Good" HorizontalOptions="Center" FontAttributes="Bold" FontSize="12"></Label>
+                <Label Grid.Row="0" Grid.Column="2" Text="Hard" HorizontalOptions="Center" FontAttributes="Bold" FontSize="12"></Label>
+                <Button Margin="10, 0, 10, 0" BackgroundColor="Transparent" Image="{Binding DifficultyEasy, Converter={StaticResource DifficultyConverter}}" 
+                        Grid.Row="1" Grid.Column="0" Command="{Binding Source={x:Reference SerieExerciseDayAddView}, Path=BindingContext.SaveDifficultyEasyCommand}" CommandParameter="{Binding .}"/>
+                <Button Margin="10, 0, 10, 0" BackgroundColor="Transparent" Image="{Binding DifficultyGood, Converter={StaticResource DifficultyConverter}}" 
+                        Grid.Row="1" Grid.Column="1" Command="{Binding Source={x:Reference SerieExerciseDayAddView}, Path=BindingContext.SaveDifficultyGoodCommand}" CommandParameter="{Binding .}"/>
+                <Button Margin="10, 0, 10, 0" BorderColor="Transparent" BackgroundColor="Transparent" Image="{Binding DifficultyHard, Converter={StaticResource DifficultyConverter}}" 
+                        Grid.Row="1" Grid.Column="2" Command="{Binding Source={x:Reference SerieExerciseDayAddView}, Path=BindingContext.SaveDifficultyHardCommand}" CommandParameter="{Binding .}"/>
+            </Grid>
+        </StackLayout>
+        <Label Text="Exercise repetitions" HorizontalOptions="Center" FontAttributes="Bold" FontSize="24"></Label>
+        <ListView x:Name="lvSerieExercisesDay" ItemsSource="{Binding SerieExerciseDayList}">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <ViewCell>
+                        <ViewCell.ContextActions>
+                            <MenuItem Text="Delete" Command="{Binding Source={x:Reference SerieExerciseDayAddView}, Path=BindingContext.DeleteCommand}" CommandParameter="{Binding .}"></MenuItem>
+                            <MenuItem Text="Edit" Command="{Binding Source={x:Reference SerieExerciseDayAddView}, Path=BindingContext.LoadCommand}" CommandParameter="{Binding .}"></MenuItem>
+                        </ViewCell.ContextActions>
+                        <StackLayout HeightRequest="Infinity" Orientation="Horizontal">
+                            <Label Text="{Binding Order}"/>
+                            <Label Text="{Binding Difficulty}"/>
+                            <Label Text="{Binding Repetitions}"/>
+                            <Label Text="{Binding Weight}"/>
+                        </StackLayout>
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
     </StackLayout>
 </ContentPage>

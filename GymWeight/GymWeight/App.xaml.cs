@@ -13,7 +13,7 @@ namespace GymWeight
 		{
 			InitializeComponent();
 
-			MainPage = new NavigationPage(new ExerciseAddView());
+			MainPage = new NavigationPage(new WorkoutAddView());
 		}
 
 		protected override void OnStart ()

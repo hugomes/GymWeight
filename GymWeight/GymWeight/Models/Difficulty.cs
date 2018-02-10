@@ -8,6 +8,6 @@ namespace GymWeight.Models
 {
     public enum Difficulty
     {
-        ICouldntFinish, IWasAbleToDoEverything, ICanDoMore
+        Hard, Good, Easy
     }
 }

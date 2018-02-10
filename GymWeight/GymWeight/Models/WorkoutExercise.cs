@@ -8,13 +8,12 @@ using SQLiteNetExtensions.Attributes;
 
 namespace GymWeight.Models
 {
-    public class Day
+    public class WorkoutExercise
     {
-        [PrimaryKey, AutoIncrement]
-        public int Id { get; set; }
-        [NotNull, ForeignKey(typeof(Workout))]
+        [ForeignKey(typeof(Workout))]
         public int WorkoutId { get; set; }
-        [NotNull]
-        public DateTime Date { get; set; }
+
+        [ForeignKey(typeof(Exercise))]
+        public int ExerciseId { get; set; }
     }
 }

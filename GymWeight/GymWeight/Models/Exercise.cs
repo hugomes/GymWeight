@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using SQLite;
+using SQLiteNetExtensions.Attributes;
 
 namespace GymWeight.Models
 {
@@ -17,5 +18,7 @@ namespace GymWeight.Models
         public int Series{ get; set; }
         [NotNull]
         public int Repetitions { get; set; }
+        [ManyToMany(typeof(WorkoutExercise))]
+        public List<Workout> WorkoutList { get; set; }
     }
 }

@@ -17,14 +17,14 @@ namespace GymWeight.Converters
             string returnString = "";
             switch (difficulty)
             {
-                case Difficulty.ICouldntFinish:
-                    returnString = "I couldn't finish";
+                case Difficulty.Hard:
+                    returnString = "Hard.png";
                     break;
-                case Difficulty.IWasAbleToDoEverything:
-                    returnString = "I was able to do everything";
+                case Difficulty.Good:
+                    returnString = "Good.png";
                     break;
-                case Difficulty.ICanDoMore:
-                    returnString = "I was able to do everything";
+                case Difficulty.Easy:
+                    returnString = "Easy.png";
                     break;
             }
 

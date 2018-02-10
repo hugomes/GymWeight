@@ -2,8 +2,8 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="GymWeight.Views.ExerciseAddView"
-             Title="Add Exercise"
-             x:Name="ExerciseAddView">
+             x:Name="ExerciseAddView"
+             Title="Add Exercise">
     <StackLayout>
         <StackLayout Orientation="Vertical">
             <Entry x:Name="entName" Text="{Binding ExerciseAdd.Name}" Placeholder="Name from exercise" HorizontalOptions="FillAndExpand"></Entry>

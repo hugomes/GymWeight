@@ -8,8 +8,8 @@ namespace GymWeight.Models
     {
         [PrimaryKey, AutoIncrement]
         public int Id { get; set; }
-        [NotNull]
-        public Day Day { get; set; }
+        [NotNull, ForeignKey(typeof(Day))]
+        public int DayId { get; set; }
         [NotNull, ForeignKey(typeof(Exercise))]
         public int ExerciseId { get; set; }
         [OneToMany]

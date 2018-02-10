@@ -17,9 +17,8 @@
     <Compile Condition=" '$(EnableDefaultCompileItems)' == 'true' " Update="MainPage.xaml.cs">
       <DependentUpon>*.xaml</DependentUpon>
     </Compile>
-  </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="Models\" />
+    <Compile Update="Views\WorkoutAddView.xaml.cs">
+      <DependentUpon>WorkoutAddView.xaml</DependentUpon>
+    </Compile>
   </ItemGroup>
 </Project>
