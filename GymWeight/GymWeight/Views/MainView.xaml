@@ -1,0 +1,21 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<MasterDetailPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:views="clr-namespace:GymWeight.Views;assembly=GymWeight"
+             x:Class="GymWeight.Views.MainView"
+            Title="Gym Weight">
+
+    <MasterDetailPage.Master>
+        <ContentPage Title="Menu" Icon="MenuIcon.png">
+            <StackLayout>
+                <Button Text="New workout day" x:Name="btnNewWorkoutDayView" Clicked="BtnNewWorkoutDayView_OnClicked"/>
+                <Button Text="Workouts" x:Name="btnWorkoutAddView" Clicked="BtnWorkoutAddView_OnClicked"/>
+                <Button Text="Exercises" x:Name="btnExerciseAddView" Clicked="BtnExerciseAddView_OnClicked"/>
+                <Button Text="Workout exercises" x:Name="btnWorkoutExerciseAddView" Clicked="BtnWorkoutExerciseAddView_OnClicked"/>
+            </StackLayout>
+        </ContentPage>
+    </MasterDetailPage.Master>
+    <MasterDetailPage.Detail>
+        <views:StartView></views:StartView>
+    </MasterDetailPage.Detail>
+</MasterDetailPage>

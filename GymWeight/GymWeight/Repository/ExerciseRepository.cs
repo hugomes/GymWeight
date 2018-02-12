@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using GymWeight.Models;
 using SQLite;
+using SQLiteNetExtensions.Extensions;
 using Xamarin.Forms;
 
 namespace GymWeight.Repository
@@ -21,7 +22,7 @@ namespace GymWeight.Repository
 
         public List<Exercise> GetAll()
         {
-            return _databaseConnection.Table<Exercise>().ToList();
+            return _databaseConnection.GetAllWithChildren<Exercise>().ToList();
         }
 
         public int Save(Exercise exercise)

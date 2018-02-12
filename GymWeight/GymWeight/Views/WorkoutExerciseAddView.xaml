@@ -1,0 +1,34 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="GymWeight.Views.WorkoutExerciseAddView"
+             x:Name="WorkoutExerciseAddView">
+    <ContentPage.Content>
+        <StackLayout Orientation="Vertical">
+            <StackLayout Orientation="Vertical">
+                <Label Text="Workouts list"/>
+                <Picker Title="Select the workout" x:Name="PickerExercise" ItemsSource="{Binding WorkoutList}" SelectedItem="{Binding WorkoutAdd}" ItemDisplayBinding="{Binding Name}"/>
+                <Label Text="Exercises list"/>
+                <Picker Title="Select the exercise" x:Name="PickerWorkout" ItemsSource="{Binding ExerciseList}" SelectedItem="{Binding ExerciseAdd}" ItemDisplayBinding="{Binding Name}"/>
+                <Button Command="{Binding SaveCommand}" Text="Add exercise to workout" HorizontalOptions="FillAndExpand"/>
+            </StackLayout>
+            <Label Text="Workouts Exercises List" HorizontalOptions="Center" FontAttributes="Bold" FontSize="24"></Label>
+            <ListView x:Name="lvWorkoutsExercises" ItemsSource="{Binding WorkoutExerciseList}">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <ViewCell.ContextActions>
+                                <MenuItem Text="Delete" Command="{Binding Source={x:Reference WorkoutExerciseAddView}, Path=BindingContext.DeleteCommand}" CommandParameter="{Binding .}"></MenuItem>
+                                <MenuItem Text="Edit" Command="{Binding Source={x:Reference WorkoutExerciseAddView}, Path=BindingContext.LoadCommand}" CommandParameter="{Binding .}"></MenuItem>
+                            </ViewCell.ContextActions>
+                            <StackLayout Orientation="Horizontal">
+                                <Label Text="{Binding Workout.Name}"></Label>
+                                <Label Text="{Binding Exercise.Name}"></Label>
+                            </StackLayout>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>
