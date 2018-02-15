@@ -8,7 +8,7 @@
     <MasterDetailPage.Master>
         <ContentPage Title="Menu" Icon="MenuIcon.png">
             <StackLayout>
-                <Button Text="New workout day" x:Name="btnNewWorkoutDayView" Clicked="BtnNewWorkoutDayView_OnClicked"/>
+                <Button Text="New workout day" x:Name="btnDayView" Clicked="BtnDayView_OnClicked"/>
                 <Button Text="Workouts" x:Name="btnWorkoutAddView" Clicked="BtnWorkoutAddView_OnClicked"/>
                 <Button Text="Exercises" x:Name="btnExerciseAddView" Clicked="BtnExerciseAddView_OnClicked"/>
                 <Button Text="Workout exercises" x:Name="btnWorkoutExerciseAddView" Clicked="BtnWorkoutExerciseAddView_OnClicked"/>

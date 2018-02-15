@@ -14,8 +14,14 @@
     <Compile Condition=" '$(EnableDefaultCompileItems)' == 'true' " Update="App.xaml.cs">
       <DependentUpon>*.xaml</DependentUpon>
     </Compile>
+    <Compile Update="Views\DayView.xaml.cs">
+      <DependentUpon>DayView.xaml</DependentUpon>
+    </Compile>
     <Compile Update="Views\WorkoutAddView.xaml.cs">
       <DependentUpon>WorkoutAddView.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Views\ExerciseDayView.xaml.cs">
+      <DependentUpon>ExerciseDayView.xaml</DependentUpon>
     </Compile>
   </ItemGroup>
 
@@ -23,7 +29,7 @@
     <EmbeddedResource Update="Views\MainView.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="Views\NewWorkoutDayView.xaml">
+    <EmbeddedResource Update="Views\DayView.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="Views\StartView.xaml">

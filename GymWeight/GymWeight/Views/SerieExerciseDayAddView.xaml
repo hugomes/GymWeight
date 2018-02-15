@@ -12,7 +12,7 @@
     </ContentPage.Resources>
     <StackLayout Padding="10, 5, 10 ,5">
         <StackLayout Orientation="Horizontal" HorizontalOptions="CenterAndExpand">
-            <Label Text="{Binding ExerciseDay.Day.Date}"/>
+            <Label Text="{Binding ExerciseDay.Day.Date, StringFormat='{0:dd/MM/yyyy}'}"/>
             <Label Text="{Binding ExerciseDay.Exercise.Name}"/>
         </StackLayout>
         <StackLayout Orientation="Horizontal" HorizontalOptions="CenterAndExpand">
@@ -51,10 +51,26 @@
                             <MenuItem Text="Edit" Command="{Binding Source={x:Reference SerieExerciseDayAddView}, Path=BindingContext.LoadCommand}" CommandParameter="{Binding .}"></MenuItem>
                         </ViewCell.ContextActions>
                         <StackLayout HeightRequest="Infinity" Orientation="Horizontal">
-                            <Label Text="{Binding Order}"/>
-                            <Label Text="{Binding Difficulty}"/>
-                            <Label Text="{Binding Repetitions}"/>
-                            <Label Text="{Binding Weight}"/>
+                            <Grid>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition></RowDefinition>
+                                    <RowDefinition></RowDefinition>
+                                </Grid.RowDefinitions>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition></ColumnDefinition>
+                                    <ColumnDefinition></ColumnDefinition>
+                                    <ColumnDefinition></ColumnDefinition>
+                                    <ColumnDefinition></ColumnDefinition>
+                                </Grid.ColumnDefinitions>
+                                <Label Text="Num" Grid.Row="0" Grid.Column="0"/>
+                                <Label Text="{Binding Order}" Grid.Row="1" Grid.Column="0"/>
+                                <Label Text="Difficulty" Grid.Row="0" Grid.Column="1"/>
+                                <Label Text="{Binding Difficulty}" Grid.Row="1" Grid.Column="1"/>
+                                <Label Text="{Binding Repetitions}" Grid.Row="1" Grid.Column="2"/>
+                                <Label Text="Repetitions" Grid.Row="0" Grid.Column="2"/>
+                                <Label Text="{Binding Weight}" Grid.Row="1" Grid.Column="3"/>
+                                <Label Text="Weight" Grid.Row="0" Grid.Column="3"/>
+                            </Grid>
                         </StackLayout>
                     </ViewCell>
                 </DataTemplate>

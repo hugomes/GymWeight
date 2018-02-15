@@ -14,5 +14,9 @@ namespace GymWeight.Models
         public int ExerciseId { get; set; }
         [OneToMany]
         public List<SerieExerciseDay> SerieExerciseDayList { get; set; }
+        [ManyToOne]
+        public Exercise Exercise { get; set; }
+        [ManyToOne]
+        public Day Day { get; set; }
     }
 }

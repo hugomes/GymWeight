@@ -1,0 +1,45 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="GymWeight.Views.ExerciseDayView"
+             x:Name="ExerciseDayView"
+             Title="Exercises of the day">
+    <StackLayout Orientation="Vertical">
+        <StackLayout Orientation="Vertical">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition></RowDefinition>
+                    <RowDefinition></RowDefinition>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition></ColumnDefinition>
+                    <ColumnDefinition></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+                <Label Text="Date" Grid.Row="0" Grid.Column="0"/>
+                <Label Text="{Binding DayAdd.Date, StringFormat='{0:dd/MM/yyyy}'}" Grid.Row="1" Grid.Column="0"/>
+                <Label Text="Workout" Grid.Row="0" Grid.Column="1"/>
+                <Label Text="{Binding DayAdd.Workout.Name}" Grid.Row="1" Grid.Column="1"/>
+            </Grid>
+            <Label Text="Exercises list"/>
+            <Picker Title="Select the exercise" x:Name="PickerWorkout" ItemsSource="{Binding ExerciseList}" SelectedItem="{Binding ExerciseAdd}" ItemDisplayBinding="{Binding Name}"/>
+            <Button Command="{Binding SaveCommand}" Text="New serie from exercise" HorizontalOptions="FillAndExpand" x:Name="btnSave" Clicked="BtnSave_OnClicked" CommandParameter="{Binding ExerciseDayAdd}"/>
+        </StackLayout>
+        <Label Text="Serie Exercises List" HorizontalOptions="Center" FontAttributes="Bold" FontSize="24"></Label>
+        <ListView x:Name="lvExerciseDay" ItemsSource="{Binding ExerciseDayList}">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <ViewCell>
+                        <ViewCell.ContextActions>
+                            <MenuItem Text="Add Repetitions" Clicked="MenuItem_OnClicked" CommandParameter="{Binding .}"></MenuItem>
+                            <MenuItem Text="Delete" Command="{Binding Source={x:Reference ExerciseDayView}, Path=BindingContext.DeleteCommand}" CommandParameter="{Binding .}"></MenuItem>
+                            <MenuItem Text="Edit" Command="{Binding Source={x:Reference ExerciseDayView}, Path=BindingContext.LoadCommand}" CommandParameter="{Binding .}"></MenuItem>
+                        </ViewCell.ContextActions>
+                        <StackLayout Orientation="Horizontal">
+                            <Label Text="{Binding Exercise.Name}"></Label>
+                        </StackLayout>
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+    </StackLayout>
+</ContentPage>

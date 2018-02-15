@@ -16,5 +16,7 @@ namespace GymWeight.Models
         public int WorkoutId { get; set; }
         [NotNull]
         public DateTime Date { get; set; }
+        [ManyToOne]
+        public Workout Workout { get; set; }
     }
 }

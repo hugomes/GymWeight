@@ -34,7 +34,8 @@ namespace GymWeight.ViewsModels
         public SerieExerciseDayAddViewModel(ExerciseDay exerciseDay)
         {
             ExerciseDay = exerciseDay;
-            SerieExerciseDayList = new ObservableCollection<SerieExerciseDay>(new SerieExerciseDayRepository().GetAll().Where(c=>c.ExerciseDayId == ExerciseDay.Id));
+            //SerieExerciseDayList = new ObservableCollection<SerieExerciseDay>(new SerieExerciseDayRepository().GetAll());
+            SerieExerciseDayList = new ObservableCollection<SerieExerciseDay>(new SerieExerciseDayRepository().GetAll().Where(c => c.ExerciseDayId == ExerciseDay.Id));
 
             DifficultyHard = Difficulty.Hard;
             DifficultyGood = Difficulty.Good;

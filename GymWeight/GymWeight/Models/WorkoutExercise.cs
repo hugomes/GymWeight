@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -18,6 +19,8 @@ namespace GymWeight.Models
 
         [ForeignKey(typeof(Exercise))]
         public int ExerciseId { get; set; }
+        [DefaultValue(0)]
+        public int Order { get; set; }
 
         [ManyToOne]
         public Exercise Exercise { get; set; }

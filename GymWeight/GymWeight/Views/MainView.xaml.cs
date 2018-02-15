@@ -29,9 +29,9 @@ namespace GymWeight.Views
 	        IsPresented = false;
 	    }
 
-	    private void BtnNewWorkoutDayView_OnClicked(object sender, EventArgs e)
+	    private void BtnDayView_OnClicked(object sender, EventArgs e)
 	    {
-	        Detail = new NewWorkoutDayView();
+	        Detail = new DayView();
 	        IsPresented = false;
 	    }
 

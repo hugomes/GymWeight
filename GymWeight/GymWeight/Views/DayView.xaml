@@ -1,0 +1,32 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="GymWeight.Views.DayView"
+             x:Name="DayView"
+             Title="Workout Day">
+    <StackLayout>
+        <StackLayout>
+            <DatePicker Date="{Binding DayAdd.Date}"></DatePicker>
+            <Picker Title="Select the workout" x:Name="PickerWorkout" ItemsSource="{Binding WorkoutList}" SelectedItem="{Binding WorkoutAdd}" ItemDisplayBinding="{Binding Name}"/>
+            <Button Text="Save" Command="{Binding SaveCommand}" x:Name="btnSave" Clicked="BtnSave_OnClicked" CommandParameter="{Binding DayAdd}"></Button>
+        </StackLayout>
+        <Label Text="Days List" HorizontalOptions="Center" FontAttributes="Bold" FontSize="24"/>
+        <ListView x:Name="lvDays" ItemsSource="{Binding DayList}">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <ViewCell>
+                        <ViewCell.ContextActions>
+                            <MenuItem Text="Add Series" Clicked="MenuItem_OnClicked" CommandParameter="{Binding .}"></MenuItem>
+                            <MenuItem Text="Delete" Command="{Binding Source={x:Reference DayView}, Path=BindingContext.DeleteCommand}" CommandParameter="{Binding .}"></MenuItem>
+                            <MenuItem Text="Edit" Command="{Binding Source={x:Reference DayView}, Path=BindingContext.LoadCommand}" CommandParameter="{Binding .}"></MenuItem>
+                        </ViewCell.ContextActions>
+                        <StackLayout>
+                            <Label Text="{Binding Date, StringFormat='{0:dd/MM/yyyy}'}"></Label>
+                            <Label Text="{Binding Workout.Name}"></Label>
+                        </StackLayout>
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+    </StackLayout>
+</ContentPage>
